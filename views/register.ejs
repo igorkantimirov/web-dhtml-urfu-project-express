@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <style>
+      form{margin-top: 32px; border:1px solid #e6e6e6; width:50%; text-align: center; margin: 0 auto;}
+      input{margin: 10px;}
+    </style>
+    <%- include("partials/header.ejs") %>
+    <div class="container">
+      <form action="post">
+        <h1>Регистрация</h1>
+        <label for="username">Имя пользователя:</label> <input type="text" id="username"> <br>
+        <label for="email">Почта:</label> <input type="text" id="username" value="example@example.com"> <br>
+        <label for="phone">Номер телефона:</label> <input type="text" id="username" value="79999999999"> <br>
+        <label for="password">Пароль:</label> <input type="password" id="user_password"> <br>
+        <p><input type="checkbox" id="agree_rules"><label for="agree_rules">Согласен с <a href=''>правилами сервиса</a></label></p>
+        <input type="submit" value="Войти">
+      </form>
+    </div>
+  </body>
+</html>

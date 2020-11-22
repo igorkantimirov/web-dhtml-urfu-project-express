@@ -1,0 +1,113 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+header{
+  font-family: 'Raleway';
+  font-size: 32px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(218, 218, 218);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  color: #777c83;
+  user-select: none;
+  height: 64px;
+}
+
+header a{
+  text-decoration: none;
+  color: black;
+}
+
+.header-content{
+  margin-left:auto;
+  margin-right:auto;
+  width:70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-links{
+  font-size: 16px;
+  color: #525252;
+}
+.header-links a:hover{
+  color: red;
+}
+
+.container{
+  position: relative;
+  padding-top: 64px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+@media only screen and (max-width: 1280px) {
+  .container{
+      position: relative;
+      padding-top: 64px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+  }
+}
+
+.card{
+  display: inline-block;
+  border: 1px solid #b0b0b0;
+  height: 325px;
+  width: 240px;
+  background-color: white;
+  border-radius: 10px;
+  vertical-align: top;
+  overflow: hidden;
+  margin: 20px 10px;
+  transition: box-shadow 0.35s, transform 0.35s;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px 1px #000000;
+  transform: scale(1.05);
+}
+
+/* Содержимое карточки*/
+.card .contents{
+  padding: 10px;
+  padding-left: 10px;
+}
+
+.card_picture{
+  width: 100%;
+  padding: 0px;
+}
+
+.card h2{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.contents p{
+  color: #525252;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+.info{
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
+.auth_form{
+  background-color: beige;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  width: 50%;
+}

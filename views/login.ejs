@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <style>
+      form{margin-top: 32px; border:1px solid #e6e6e6; min-width: 300px; max-width:50%; text-align: center; margin: 0 auto;}
+      input{margin: 10px;}
+    </style>
+    <%- include("partials/header.ejs") %>
+    <div class="container">
+      <form action="post">
+        <h1>Авторизация</h1>
+        <label for="email">Почта:</label> <input type="text" id="username"> <br>
+        <label for="password">Пароль:</label> <input type="password" id="user_password"> <br>
+        <input type="submit" value="Войти">
+      </form>
+      <a href="register" style="margin-left:25%;">Регистрация</a>
+    </div>
+  </body>
+</html>
