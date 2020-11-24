@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+     <br><br>
+     <br><br>
+     <br><br>
+     <h1>Hello, <% if(user){ %> <%- user.username %> <% } %> !</h1>
+  </body>
+</html>

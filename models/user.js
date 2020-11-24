@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
-const UserModel = mongoose.model('User',{
+const User = mongoose.model('User',{
     username: String,
     password: String,
     email: String,
     phone: String
 });
  
-module.exports = UserModel
+module.exports = User

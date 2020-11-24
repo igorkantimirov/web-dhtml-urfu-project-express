@@ -10,10 +10,10 @@
     </style>
     <%- include("partials/header.ejs") %>
     <div class="container">
-      <form action="post">
+      <form method="post">
         <h1>Авторизация</h1>
-        <label for="email">Почта:</label> <input type="text" id="username"> <br>
-        <label for="password">Пароль:</label> <input type="password" id="user_password"> <br>
+        <label for="email">Почта:</label> <input type="text" name="email"> <br>
+        <label for="password">Пароль:</label> <input type="password" name="user_password"> <br>
         <input type="submit" value="Войти">
       </form>
       <a href="register" style="margin-left:25%;">Регистрация</a>

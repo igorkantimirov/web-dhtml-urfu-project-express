@@ -2,8 +2,13 @@
     <div class="header-content">
         <a href="/">Наша компания</a>
         <div class="header-links">
-          <a href="/reserve_table" class="header-services">Забронировать стол</a> &nbsp;
-          <a href="/login" class="header-services"">Вход</a> &nbsp;
+          <% if(!user){ %>  
+            <a href="/reserve_table" class="header-services">Забронировать стол</a> &nbsp;
+            <a href="/login" class="header-services"">Вход</a> &nbsp;
+          <% } else { %>
+            <a href="/logout" class="header-services"">Выйти</a> &nbsp;
+            <a href="/dashboard" class="header-services"">Личный кабинет</a> &nbsp;
+          <% } %>
         </div>
     </div>
 </header>
