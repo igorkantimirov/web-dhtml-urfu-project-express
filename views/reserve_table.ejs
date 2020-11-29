@@ -9,54 +9,58 @@
         <div style="margin-top:32px">
           <h1>Забронировать столик</h1>
 
-          <form method="post" class="form">
+          <form method="post" class="form" action="/reserve_table">
             Зал: 
-            <fieldset class="form__time-type-container">
+            <fieldset class="form__room_type-container">
               <input
                 type="radio"
-                name="time-type"
-                class="form__radio-time-type"
-                id="time-type-1"
+                name="room_type"
+                class="form__radio-room_type"
+                id="room_type-1"
+                value="Домашний"
                 checked
               />
-              <label class="form__label-time-type" for="time-type-1" tabindex="0">
-                <span class="form__time-type-name">Домашний</span>
+              <label class="form__label-room_type" for="room_type-1" tabindex="0">
+                <span class="form__room_type-name">Домашний</span>
               </label>
     
               <input
                 type="radio"
-                name="time-type"
-                class="form__radio-time-type"
-                id="time-type-2"
+                name="room_type"
+                class="form__radio-room_type"
+                id="room_type-2"
+                value="Восточный"
               />
-              <label class="form__label-time-type" for="time-type-2" tabindex="0">
-                <span class="form__time-type-name">Восточный</span>
+              <label class="form__label-room_type" for="room_type-2" tabindex="0">
+                <span class="form__room_type-name">Восточный</span>
               </label>
     
               <input
                 type="radio"
-                name="time-type"
-                class="form__radio-time-type"
-                id="time-type-3"
+                name="room_type"
+                class="form__radio-room_type"
+                id="room_type-3"
+                value="VIP"
               />
-              <label class="form__label-time-type" for="time-type-3" tabindex="0">
-                <span class="form__time-type-name">VIP</span>
+              <label class="form__label-room_type" for="room_type-3" tabindex="0">
+                <span class="form__room_type-name">VIP</span>
               </label>
 
               <input
                 type="radio"
-                name="time-type"
-                class="form__radio-time-type"
-                id="time-type-4"
+                name="room_type"
+                class="form__radio-room_type"
+                id="room_type-4"
+                value="Караоке"
               />
-              <label class="form__label-time-type" for="time-type-4" tabindex="0">
-                <span class="form__time-type-name">Караоке</span>
+              <label class="form__label-room_type" for="room_type-4" tabindex="0">
+                <span class="form__room_type-name">Караоке</span>
               </label>
             </fieldset>
-            Дата: <input type="date" name="" id="">
-            Время: <input type="time" name="" id="">
-            Кол-во персон: <input type="number" name="" id="" value=1>
-            Комментарий: <br> <textarea name="" id="" cols="30" rows="4" placeholder="Пожелания к брони"></textarea> <br>
+            Дата: <input type="date" name="date" id="">
+            Время: <input type="time" name="room" id="">
+            Кол-во персон: <input type="number" name="persons" id="" value=1>
+            Комментарий: <br> <textarea name="additional" id="" cols="30" rows="4" placeholder="Пожелания к брони" style="resize:none;"></textarea> <br>
             <input type="submit" value="Отправить заявку" class="form__button-reserve">
           </form>
         </div>
@@ -67,16 +71,16 @@
     </div>
     <script type="text/javascript">
       var image = document.getElementById("restourant-image");
-       document.getElementById("time-type-1").onchange = function(){
+       document.getElementById("room_type-1").onchange = function(){
          image.src = "images/reserve-table-bg-1.jpg"
        }
-       document.getElementById("time-type-2").onchange = function(){
+       document.getElementById("room_type-2").onchange = function(){
          image.src = "images/reserve-table-bg-2.jpg"
        }
-       document.getElementById("time-type-3").onchange = function(){
+       document.getElementById("room_type-3").onchange = function(){
          image.src = "images/reserve-table-bg-3.jpg"
        }
-       document.getElementById("time-type-4").onchange = function(){
+       document.getElementById("room_type-4").onchange = function(){
          image.src = "images/reserve-table-bg-4.jpg"
        }
      </script>

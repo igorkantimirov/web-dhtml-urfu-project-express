@@ -38,6 +38,18 @@ router.get("/dashboard", ensureAuthenticated, function (req, res, next) {
   res.render('dashboard', {user: getUser(req)})
 });
 
+// on reserve table form
+router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
+  const room = req.body.room_type
+  const date = req.body.date
+  const time = req.body.time
+  const additional = req.body.additional
+  if(!room || !date || !time){
+    // ??? Ошибка
+  }
+  res.render('success_reserved_table', {user:getUser(req), room:room, date:date, time:time, additional:additional})
+})
+
 // login-register
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {

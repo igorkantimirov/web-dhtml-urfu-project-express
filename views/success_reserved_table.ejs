@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%- include("partials/head.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+     <div class="container">
+      <h1><% if(user){ %> <%- user.username %> <% } %>, столик успешно забронирован.</h1>
+      <h2>Подробности</h2>
+      <b>Зал:</b> <%- room %> <br>
+      <b>Время:</b> <%- date %> <%- time %> <br>
+      <% if(additional){ %>
+      <b>Комментарий:</b> <%- additional %>  <br>
+      <% } %>
+      <div>
+      </div>
+     </div>
+  </body>
+</html>

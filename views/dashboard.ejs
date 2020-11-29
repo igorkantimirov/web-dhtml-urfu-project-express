@@ -5,9 +5,11 @@
   </head>
   <body>
     <%- include("partials/header.ejs") %>
-     <br><br>
-     <br><br>
-     <br><br>
-     <h1>Hello, <% if(user){ %> <%- user.username %> <% } %> !</h1>
+     <div class="container">
+      <h1>Привет, <% if(user){ %> <%- user.username %> <% } %> !</h1>
+      <h2>Информация о заказах</h2>
+      <div>
+      </div>
+     </div>
   </body>
 </html>

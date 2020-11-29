@@ -145,7 +145,7 @@ header a{
   font-weight: bold;
 }
 
-.form__label-time-type {
+.form__label-room_type {
   background-color: #ebf0f5;
   cursor: pointer;
   display: flex;
@@ -153,31 +153,31 @@ header a{
   text-align: center;
 }
 
-.form__time-type-container {
+.form__room_type-container {
   height: 54px;
 }
 
-.form__radio-time-type:checked + .form__label-time-type {
+.form__radio-room_type:checked + .form__label-room_type {
   background-color: rgb(255, 235, 160);
   border: 0px;
 }
 
-.form__radio-time-type {
+.form__radio-room_type {
   display: none;
 }
 
-.form__time-type-container {
+.form__room_type-container {
   border: none;
   display: flex;
   padding: 0;
   margin: 0;
 }
 
-.form__time-type-name {
+.form__room_type-name {
   margin: auto;
 }
 
-.form__time-type-container {
+.form__room_type-container {
   height: 54px;
 }
 
