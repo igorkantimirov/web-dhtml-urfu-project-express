@@ -5,25 +5,80 @@
   </head>
   <body>
     <%- include("partials/header.ejs") %>
-    <div class="container">
+    <div class="container columns2">
         <div style="margin-top:32px">
           <h1>Забронировать столик</h1>
 
-          <form method="post" style="border: 1px solid #e4e4e4; width:50%;">
-            Время: <div>
-              <button>10:00</button>
-              <button>11:00</button>
-              <button>12:00</button>
-              <button>13:00</button>
-              <button>14:00</button>
-              <button>20:00</button>
-            </div>
-            Дата: <input type="date" name="" id=""> <br>
-            Кол-во персон: <input type="number" name="" id="" value=1> <br>
-            Комментарий: <br> <textarea name="" id="" cols="30" rows="4" placeholder="Пожелания к брони"></textarea><br><br>
-            <input type="submit" value="Забронировать">
+          <form method="post" class="form">
+            Зал: 
+            <fieldset class="form__time-type-container">
+              <input
+                type="radio"
+                name="time-type"
+                class="form__radio-time-type"
+                id="time-type-1"
+                checked
+              />
+              <label class="form__label-time-type" for="time-type-1" tabindex="0">
+                <span class="form__time-type-name">Домашний</span>
+              </label>
+    
+              <input
+                type="radio"
+                name="time-type"
+                class="form__radio-time-type"
+                id="time-type-2"
+              />
+              <label class="form__label-time-type" for="time-type-2" tabindex="0">
+                <span class="form__time-type-name">Восточный</span>
+              </label>
+    
+              <input
+                type="radio"
+                name="time-type"
+                class="form__radio-time-type"
+                id="time-type-3"
+              />
+              <label class="form__label-time-type" for="time-type-3" tabindex="0">
+                <span class="form__time-type-name">VIP</span>
+              </label>
+
+              <input
+                type="radio"
+                name="time-type"
+                class="form__radio-time-type"
+                id="time-type-4"
+              />
+              <label class="form__label-time-type" for="time-type-4" tabindex="0">
+                <span class="form__time-type-name">Караоке</span>
+              </label>
+            </fieldset>
+            Дата: <input type="date" name="" id="">
+            Время: <input type="time" name="" id="">
+            Кол-во персон: <input type="number" name="" id="" value=1>
+            Комментарий: <br> <textarea name="" id="" cols="30" rows="4" placeholder="Пожелания к брони"></textarea> <br>
+            <input type="submit" value="Отправить заявку" class="form__button-reserve">
           </form>
         </div>
+        <div class="container-2columns-imagecol">
+          <img src="images/reserve-table-bg-1.jpg" id="restourant-image" alt="Фотография зала" style="width:85%; border-radius:10px;">
+        </div>
+        </div>
     </div>
+    <script type="text/javascript">
+      var image = document.getElementById("restourant-image");
+       document.getElementById("time-type-1").onchange = function(){
+         image.src = "images/reserve-table-bg-1.jpg"
+       }
+       document.getElementById("time-type-2").onchange = function(){
+         image.src = "images/reserve-table-bg-2.jpg"
+       }
+       document.getElementById("time-type-3").onchange = function(){
+         image.src = "images/reserve-table-bg-3.jpg"
+       }
+       document.getElementById("time-type-4").onchange = function(){
+         image.src = "images/reserve-table-bg-4.jpg"
+       }
+     </script>
   </body>
 </html>
