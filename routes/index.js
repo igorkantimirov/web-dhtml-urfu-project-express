@@ -35,8 +35,26 @@ router.get("/reserve_table", ensureAuthenticated, function (req, res, next) {
 });
 
 router.get("/dashboard", ensureAuthenticated, function (req, res, next) {
-  res.render('dashboard', {user: getUser(req)})
+  const currentUser = getUser(req)
+  User.findOne({username:currentUser.username, email:currentUser.email}).then(obj=>{
+    res.render('dashboard', {user: getUser(req), reservedTables: obj.reservedTables})
+  })
 });
+
+router.post("/delete_table", ensureAuthenticated, function(req, res, next){
+  const tableId = req.body.tableId
+  const currentUser = getUser(req)
+  User.findOne({username:currentUser.username, email:currentUser.email})
+  .then(x=>{
+    let tables = x.reservedTables
+    tables[tableId]=undefined
+    tables = tables.filter(x=> x!=undefined)
+    x.reservedTables = tables
+    console.log(x.reservedTables)
+    x.save();
+    res.json({successMessage:"deleted"});}
+  );
+})
 
 // on reserve table form
 router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
@@ -45,9 +63,15 @@ router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
   const time = req.body.time
   const additional = req.body.additional
   if(!room || !date || !time){
-    // ??? Ошибка
+    // TODO: Выдать красивую ошибку
   }
-  res.render('success_reserved_table', {user:getUser(req), room:room, date:date, time:time, additional:additional})
+  const tableInfo = {room:room, date:date, time:time, additional:additional}
+  const currentUser = getUser(req)
+  User.findOne({username:currentUser.username, email:currentUser.email}, function(err,obj) { 
+    obj.reservedTables.push(tableInfo);
+    obj.save()
+  })
+  res.render('success_reserved_table', {user:currentUser, tableInfo})
 })
 
 // login-register

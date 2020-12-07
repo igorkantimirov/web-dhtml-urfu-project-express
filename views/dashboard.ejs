@@ -6,10 +6,36 @@
   <body>
     <%- include("partials/header.ejs") %>
      <div class="container">
-      <h1>Привет, <% if(user){ %> <%- user.username %> <% } %> !</h1>
+      <h1><% if(user){ %> <%- user.username %> <% } %></h1>
       <h2>Информация о заказах</h2>
       <div>
+        <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
+          <div class="table_reservation_card" id="table_<%- i %>">
+            <h3>Столик</h3>
+            <%- item['room'] %>  <br>
+            <%- item['date'] %>  <br>
+            <%- item['time'] %>  <br>
+            <%- item['additional'] %>  <br>
+            <button onclick="cancelTable(<%- i  %>);">Отменить</button>
+            <button>Уточнить</button>
+          </div>
+        <% } %>
       </div>
      </div>
+
+     <script type="text/javascript">
+      function cancelTable(id){
+        fetch('/delete_table', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify({tableId: id})
+        }).then(result=>{
+          let resultJson = result.json();
+          document.getElementById("table_"+id).remove()
+        });
+      }
+    </script>
   </body>
 </html>

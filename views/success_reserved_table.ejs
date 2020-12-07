@@ -8,10 +8,10 @@
      <div class="container">
       <h1><% if(user){ %> <%- user.username %> <% } %>, столик успешно забронирован.</h1>
       <h2>Подробности</h2>
-      <b>Зал:</b> <%- room %> <br>
-      <b>Время:</b> <%- date %> <%- time %> <br>
-      <% if(additional){ %>
-      <b>Комментарий:</b> <%- additional %>  <br>
+      <b>Зал:</b> <%- tableInfo.room %> <br>
+      <b>Время:</b> <%- tableInfo.date %> <%- tableInfo.time %> <br>
+      <% if(tableInfo.additional){ %>
+      <b>Комментарий:</b> <%- tableInfo.additional %>  <br>
       <% } %>
       <div>
       </div>
