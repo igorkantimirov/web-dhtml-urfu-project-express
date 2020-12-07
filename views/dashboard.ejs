@@ -12,10 +12,11 @@
         <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
           <div class="table_reservation_card" id="table_<%- i %>">
             <h3>Столик</h3>
-            <%- item['room'] %>  <br>
-            <%- item['date'] %>  <br>
-            <%- item['time'] %>  <br>
-            <%- item['additional'] %>  <br>
+            Зал: <%- item['room'] %>  <br>
+            Дата: <%- item['date'] %>  <br>
+            Время: <%- item['time'] %>  <br>
+            <hr>
+            Пожелания: <%- item['additional'] %>  <br>
             <button onclick="cancelTable(<%- i  %>);">Отменить</button>
             <button>Уточнить</button>
           </div>
@@ -34,6 +35,14 @@
         }).then(result=>{
           let resultJson = result.json();
           document.getElementById("table_"+id).remove()
+          let i = id;
+          while(true){
+            let element = document.getElementById("table_" + (i+1));
+            element.id = "table_"+(i);
+            element.onclick = "cancelTable"+(i);
+            if(element == undefined) { break; }
+            i++;
+          }
         });
       }
     </script>
