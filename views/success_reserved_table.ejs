@@ -8,13 +8,14 @@
      <div class="container">
       <h1><% if(user){ %> <%- user.username %> <% } %>, столик успешно забронирован.</h1>
       <h2>Подробности</h2>
+      <p>Код (покажите на входе):</p> <div style="text-align: center;"><img src="/qr/<%- tableInfo._id %>" alt="Код"></div>
       <b>Зал:</b> <%- tableInfo.room %> <br>
+      <%- tableInfo.table %> <br>
+      <b>Кол-во персон:</b> <%- tableInfo.persons %> <br>
       <b>Время:</b> <%- tableInfo.date %> <%- tableInfo.time %> <br>
       <% if(tableInfo.additional){ %>
       <b>Комментарий:</b> <%- tableInfo.additional %>  <br>
       <% } %>
-      <div>
-      </div>
      </div>
   </body>
 </html>

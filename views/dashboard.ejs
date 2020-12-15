@@ -13,15 +13,17 @@
           Нет заказов
         <% } %>
         <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
-          <div class="table_reservation_card" id="table_<%- i %>">
+          <div class="table_reservation_card" id="table_<%- item['id'] %>">
             <h3>Столик</h3>
-            Номер (назовите на входе): <%- item['id'] %>  <br>
+            <p>Код (покажите на входе):</p> <div style="text-align: center;"><img src="/qr/<%- item['id'] %>" alt="Код"></div>  <br>
             Зал: <%- item['room'] %>  <br>
+            <%- item['table'] %> <br>
+            Кол-во персон: <%- item['persons'] %> <br>
             Дата: <%- item['date'] %>  <br>
             Время: <%- item['time'] %>  <br>
             <hr>
             Пожелания: <% if(item['additional']){ %> <%- item['additional'] %> <% } else{ %> Нет <% } %>  <br>
-            <button onclick="cancelTable(<%- i  %>);">Отменить</button>
+            <button onclick="cancelTable('<%- item['id'] %>');">Отменить</button>
           </div>
         <% } %>
       </div>
@@ -36,16 +38,11 @@
           },
           body: JSON.stringify({tableId: id})
         }).then(result=>{
-          let resultJson = result.json();
-          document.getElementById("table_"+id).remove()
-          let i = id;
-          while(true){
-            let element = document.getElementById("table_" + (i+1));
-            element.id = "table_"+(i);
-            element.onclick = "cancelTable"+(i);
-            if(element == undefined) { break; }
-            i++;
-          }
+          result.json().then(data=>{
+            if(data.successMessage === "deleted"){
+              document.getElementById("table_"+id).remove()
+            }
+          })
         });
       }
     </script>

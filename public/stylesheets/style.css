@@ -237,10 +237,15 @@ header a{
   padding: 0;
   background: rgba(0,0,0,0.95);
 }
+@keyframes animationShow {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
 .modal:target {
   visibility: visible;
-pointer-events: auto;
+  pointer-events: auto;
   overflow-y: auto;
+  animation: animationShow 250ms ease-in-out both;
 }
 .modal-content {
   position: relative;

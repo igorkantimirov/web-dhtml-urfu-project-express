@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // db https://cloud.mongodb.com/
-mongoose.connect("mongodb+srv://user1:7XAwGFV9f7JrDaAL@cluster0.uleev.mongodb.net/restaurant?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology:true, dbName:"restaurant" }, function(err){
+mongoose.connect("mongodb+srv://user1:WxnUR3aslBgaRUhs@cluster0.uleev.mongodb.net/restaurant?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology:true, dbName:"restaurant" }, function(err){
     if(err) return console.log(err);
 });
 
