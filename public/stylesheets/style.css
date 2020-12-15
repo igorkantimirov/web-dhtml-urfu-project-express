@@ -205,6 +205,24 @@ header a{
 .table_reservation_card button:hover{
   background: #b89300;
 }
+.table__radio{
+  display:none;
+}
+.table__cell{
+  border: 1px solid rgb(190, 190, 190);
+}
+.table__radio:checked + .table__label {
+  background-color: rgb(255, 235, 160);;
+}
+.tables__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 21px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding:0;
+}
 
 .modal {
   position: fixed;

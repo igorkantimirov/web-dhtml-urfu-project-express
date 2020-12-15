@@ -15,13 +15,13 @@
         <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
           <div class="table_reservation_card" id="table_<%- i %>">
             <h3>Столик</h3>
+            Номер (назовите на входе): <%- item['id'] %>  <br>
             Зал: <%- item['room'] %>  <br>
             Дата: <%- item['date'] %>  <br>
             Время: <%- item['time'] %>  <br>
             <hr>
-            Пожелания: <%- item['additional'] %>  <br>
+            Пожелания: <% if(item['additional']){ %> <%- item['additional'] %> <% } else{ %> Нет <% } %>  <br>
             <button onclick="cancelTable(<%- i  %>);">Отменить</button>
-            <button>Уточнить</button>
           </div>
         <% } %>
       </div>

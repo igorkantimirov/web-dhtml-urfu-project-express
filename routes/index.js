@@ -65,7 +65,7 @@ router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
   if(!room || !date || !time){
     // TODO: Выдать красивую ошибку
   }
-  const tableInfo = {room:room, date:date, time:time, additional:additional}
+  const tableInfo = {id: Math.floor(Math.random() * 99999),room:room, date:date, time:time, additional:additional}
   const currentUser = getUser(req)
   User.findOne({username:currentUser.username, email:currentUser.email}, function(err,obj) { 
     obj.reservedTables.push(tableInfo);
