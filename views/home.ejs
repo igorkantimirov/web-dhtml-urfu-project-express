@@ -16,9 +16,22 @@
         margin-top: 32px;
         font-family: "Raleway";
       }
+      .jumbotron-block{
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
       .jumbotron-content{
         text-align: center;
         padding-top: 100px;
+      }
+      .reserve_table_button{
+        padding: 20px;
+        text-decoration: none;
+        color: white;
+        background-color: #315aa5;
+        font-size: 22px;
+        border-radius: 15px;
       }
       </style>
     <%- include("partials/header.ejs") %>
@@ -30,21 +43,90 @@
           </div>
         </div>
 
-        <% [1,2,3,4,5,6,7].forEach(x=>{ %>
-
-        <article class="card">
-        <a><img src="images/pizza.jpg" class="card_picture"/></a>
-        <div class="contents">
-          <h2>Пицца</h2>
-          <p class="info"><b>1449 рублей</b>
-          
-          Колбаски Пепперони, сыр Моцарелла, томатный соус. 
-          Станет приятным дополнением к вашему вечеру.</p>
-          <button>Добавить в корзину</button>
+        <div class="jumbotron-block">
+            <h1>Приходите к нам, у нас есть:</h1>
         </div>
-        </article>
 
-      <% }) %>
+        <a href="#food-preview-1" id="food-preview-1-link"></a>
+        <a href="#food-preview-2" id="food-preview-2-link"></a>
+        <a href="#food-preview-3" id="food-preview-3-link"></a>
+
+        <% [1,2,3].map(x=>{ %>
+        <article class="card" onclick="document.getElementById('food-preview-1-link').click()">
+          <a><img src="images/pizza.jpg" class="card_picture"/></a>
+          <div class="contents">
+            <h2>Пицца</h2>
+            <p class="info"><b>1449 рублей</b>
+            
+            Колбаски Пепперони, сыр Моцарелла, томатный соус. 
+            Станет приятным дополнением к вашему вечеру.</p>
+          </div>
+        </article>
+        <article class="card" onclick="document.getElementById('food-preview-2-link').click()">
+          <a><img src="images/food-1.jpg" class="card_picture"/></a>
+          <div class="contents">
+            <h2>Паста с курой и грибами</h2>
+            <p class="info"><b>219 рублей</b>
+
+              Феттуччине с копченой куриной грудкой, нежным сливочным соусом, репчатым луком и жареными грибами</p>
+          </div>
+        </article>
+        <article class="card" onclick="document.getElementById('food-preview-3-link').click()">
+          <a><img src="images/food-2.jpg" class="card_picture"/></a>
+          <div class="contents">
+            <h2>Жареный суп</h2>
+            <p class="info"><b>15 рублей</b>
+
+              Вчерашний суп, лук, чеснок, перец черный и красный, мука для вязкости. Пожарен на сковородке.</p>
+          </div>
+        </article>
+        <% }) %>
+    
+        <div class="jumbotron-block" style="margin-top: 30px;">
+          <a class="reserve_table_button" href="/reserve_table">Забронировать столик</a>
+      </div>
+
+      <div id="food-preview-1" class="modal">
+        <div class="modal-content">
+          <a href="#close" title="Close" class="close">×</a>
+          <div class="modal-body">
+            <img class="picture" src="images/pizza.jpg" alt="Картинка с пиццой">
+            <h3 class="modal-title">Пицца</h3>
+            <p class="info">1449 рублей
+  
+              Колбаски Пепперони, сыр Моцарелла, томатный соус. 
+              Станет приятным дополнением к вашему вечеру.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="food-preview-2" class="modal">
+        <div class="modal-content">
+          <a href="#close" title="Close" class="close">×</a>
+          <div class="modal-body">
+            <img class="picture" src="images/food-1.jpg" alt="Картинка с пастой">
+            <h3 class="modal-title">Паста с курой и грибами</h3>
+            <p class="info">219 рублей
+
+              Феттуччине с копченой куриной грудкой, нежным сливочным соусом, репчатым луком и жареными грибами.
+
+              Белки: ??? Углеводы: ??? ???:???</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="food-preview-3" class="modal">
+        <div class="modal-content">
+          <a href="#close" title="Close" class="close">×</a>
+          <div class="modal-body">
+            <img class="picture" src="images/food-2.jpg" alt="Картинка с супом">
+            <h3 class="modal-title">Жареный суп</h3>
+            <p class="info">15 рублей
+
+              Есть со сковороды шкрябая по ней ложкой.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

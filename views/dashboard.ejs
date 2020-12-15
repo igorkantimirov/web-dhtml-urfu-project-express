@@ -9,6 +9,9 @@
       <h1><% if(user){ %> <%- user.username %> <% } %></h1>
       <h2>Информация о заказах</h2>
       <div>
+        <% if(reservedTables.length === 0){ %>
+          Нет заказов
+        <% } %>
         <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
           <div class="table_reservation_card" id="table_<%- i %>">
             <h3>Столик</h3>
