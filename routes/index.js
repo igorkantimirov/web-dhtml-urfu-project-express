@@ -136,17 +136,21 @@ const { PassThrough } = require('stream');
 
 router.get('/qr/:content', async (req, res, next) => {
     try{
-        const content = req.params.content;            
-        const qrStream = new PassThrough();
-        const result = await QRCode.toFileStream(qrStream, content,
-                    {
-                        type: 'png',
-                        width: 200,
-                        errorCorrectionLevel: 'H'
-                    }
-                );
-
-        qrStream.pipe(res);
+        const content = req.params.content;
+        if(content.length > 48){
+          console.error("сработала защита от ddos через qr коды");
+        }
+        else{
+          const qrStream = new PassThrough();
+          const result = await QRCode.toFileStream(qrStream, content,
+                      {
+                          type: 'png',
+                          width: 200,
+                          errorCorrectionLevel: 'H'
+                      }
+                  );
+          qrStream.pipe(res);
+        }
     } catch(err){
         console.error('Failed to return content', err);
     }
