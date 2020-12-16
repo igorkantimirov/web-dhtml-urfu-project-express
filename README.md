@@ -18,7 +18,28 @@
 - Можно забронировать столик через форму
 - QR Коды
 - AJAX запросы
+- Деплой на heroku + база данных в mongolabs
+
+## Тестовый пользователь
+
+Создал в базе чтобы каждый раз не заполнять форму регистрации.
+
+Login: `example@example.com`
+
+Password: `example@example.com`
 
 ## Запуск
 
-run `npm run devstart`
+Указать полный адрес подключения к MongoDB в переменной окружения MONGODB_STRING.
+
+Пример в powershell: 
+
+```powershell
+
+$env:MONGODB_STRING = "???"
+
+```
+
+Запустить `npm start`
+
+для разработки использовать `npm run devstart`
