@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
-
 var passport = require('passport');
 const { ensureAuthenticated } = require("../auth.js");
 const bcrypt = require("bcryptjs");
 const User  = require("../models/user");
 const Order = require("../models/order");
 const { json } = require("body-parser");
+var mongoose = require('mongoose');
 
 function getUser(req){
   if(req.user) {
@@ -94,9 +94,16 @@ router.post("/login", (req, res, next) => {
 });
 
 router.post("/register", function (req, res, next) {
+  if(!req.body.agree_rules){
+    res.render('error',{message:"Нужно поставить галочку", error:{status:0, stack:''}});
+    next();
+    return;
+  }
+
   let newUser = undefined;
   try {
     newUser = new User({
+      _id: mongoose.Types.ObjectId(),
       username: req.body.username,
       email: req.body.email,
       phone: req.body.phone_number,

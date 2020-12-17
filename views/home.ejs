@@ -25,14 +25,6 @@
         text-align: center;
         padding-top: 100px;
       }
-      .reserve_table_button{
-        padding: 20px;
-        text-decoration: none;
-        color: white;
-        background-color: #315aa5;
-        font-size: 22px;
-        border-radius: 15px;
-      }
       </style>
     <%- include("partials/header.ejs") %>
     <div class="container">
@@ -75,15 +67,15 @@
           <a><img src="images/food-2.jpg" class="card_picture"/></a>
           <div class="contents">
             <h2>Жареный суп</h2>
-            <p class="info"><b>15 рублей</b>
+            <p class="info"><b>150 рублей</b>
 
-              Вчерашний суп, лук, чеснок, перец черный и красный, мука для вязкости. Пожарен на сковородке.</p>
+              Вчерашний суп, лук, чеснок, перец черный и красный, мука для вязкости.</p>
           </div>
         </article>
         <% }) %>
     
         <div class="jumbotron-block" style="margin-top: 30px;">
-          <a class="reserve_table_button" href="/reserve_table">Забронировать столик</a>
+          <a class="button-default" href="/reserve_table">Забронировать столик</a>
       </div>
 
       <div id="food-preview-1" class="modal">
@@ -121,7 +113,7 @@
           <div class="modal-body">
             <img class="picture" src="images/food-2.jpg" alt="Картинка с супом">
             <h3 class="modal-title">Жареный суп</h3>
-            <p class="info">15 рублей
+            <p class="info">150 рублей
 
               Есть со сковороды шкрябая по ней ложкой.</p>
           </div>
