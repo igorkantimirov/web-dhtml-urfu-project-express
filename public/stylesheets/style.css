@@ -244,6 +244,7 @@ header a{
   text-align: center;
   padding:0;
 }
+
 .button-default{
   padding: 20px;
   text-decoration: none;
@@ -252,6 +253,7 @@ header a{
   font-size: 22px;
   border-radius: 15px;
 }
+
 .button-default-s{
   padding: 16px;
   text-decoration: none;
@@ -261,6 +263,14 @@ header a{
   border-radius: 15px;
   border: 0px;
   width: 200px;
+}
+
+.button-default-s:hover{
+  background-color: #486db1;
+}
+
+.button-default-s:active{
+  background-color: #183d83;
 }
 
 .modal {
@@ -367,7 +377,7 @@ footer a{
   float: right;
 }
 
-form {
+.auth-form{
   margin-top: 32px;
   border: 1px solid #e6e6e6;
   min-width: 300px;
@@ -375,14 +385,16 @@ form {
   text-align: center;
   margin: 0 auto;
 }
-input {
-  margin: 10px;
-}
 .auth-form__input{
   background-color: #ebebeb;
   border: 1px solid #c6cef3;
   padding: 10px;
+  margin: 10px;
 }
+.auth-form__input:focus{
+  background-color: #d3d3d3;
+}
+
 
 
 @media only screen and (max-width: 800px) {
