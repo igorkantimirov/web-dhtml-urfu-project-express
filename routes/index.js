@@ -29,7 +29,7 @@ router.get("/login", function (req, res, next) {
 });
 
 router.get("/register", function (req, res, next) {
-  res.render("register", {user: getUser(req)});
+  res.render("register", {user: getUser(req), error_msg: req.flash('error_full_msg')});
 });
 
 router.get("/reserve_table", ensureAuthenticated, function (req, res, next) {
@@ -95,7 +95,14 @@ router.post("/login", (req, res, next) => {
 
 router.post("/register", function (req, res, next) {
   if(!req.body.agree_rules){
-    res.render('error',{message:"Нужно поставить галочку", error:{status:0, stack:''}});
+    req.flash("error_full_msg", "Нужно поставить галочку");
+    res.redirect("/register")
+    next();
+    return;
+  }
+  if(!req.body.username || !req.body.email || !req.body.user_password || !req.body.phone_number){
+    req.flash("error_full_msg", "Нужно заполнить все поля");
+    res.redirect("/register")
     next();
     return;
   }
@@ -115,7 +122,7 @@ router.post("/register", function (req, res, next) {
 
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
-      req.flash("error_msg", "User with that email already exists");
+      req.flash("error_full_msg", "User with that email already exists");
       res.redirect("/register");
     } else {
       bcrypt.genSalt(10, (err, salt) => {
