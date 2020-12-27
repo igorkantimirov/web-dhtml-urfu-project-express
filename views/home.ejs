@@ -4,28 +4,6 @@
   <%- include("partials/head.ejs") %>
   </head>
   <body>
-    <style>
-      .jumbotron{
-        background-image: url("images/background.jpg");
-        background-size: cover;
-        background-position: center bottom;
-        color: black;
-        width: 100%;
-        height: 300px;
-        margin: 0 auto;
-        margin-top: 32px;
-        font-family: "Raleway";
-      }
-      .jumbotron-block{
-        text-align: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-      .jumbotron-content{
-        text-align: center;
-        padding-top: 100px;
-      }
-      </style>
     <%- include("partials/header.ejs") %>
     <div class="container">
         <div class="jumbotron">
@@ -43,7 +21,7 @@
         <a href="#food-preview-2" id="food-preview-2-link"></a>
         <a href="#food-preview-3" id="food-preview-3-link"></a>
 
-        <% [1,2,3].map(x=>{ %>
+        <% [1,2,3,4].map(x=>{ %>
         <article class="card" onclick="document.getElementById('food-preview-1-link').click()">
           <a><img src="images/pizza.jpg" class="card_picture"/></a>
           <div class="contents">
@@ -66,10 +44,10 @@
         <article class="card" onclick="document.getElementById('food-preview-3-link').click()">
           <a><img src="images/food-2.jpg" class="card_picture"/></a>
           <div class="contents">
-            <h2>Жареный суп</h2>
-            <p class="info"><b>150 рублей</b>
+            <h2>Паста Карбонара</h2>
+            <p class="info"><b>229 рублей</b>
 
-              Вчерашний суп, лук, чеснок, перец черный и красный, мука для вязкости.</p>
+              Классическая итальянская паста с нежным беконом, репчатым луком и чесноком в сливочном соусе</p>
           </div>
         </article>
         <% }) %>
@@ -102,7 +80,7 @@
 
               Феттуччине с копченой куриной грудкой, нежным сливочным соусом, репчатым луком и жареными грибами.
 
-              Белки: ??? Углеводы: ??? ???:???</p>
+              Белки: 5.5 гр., жиры: 22.6 гр., углеводы: 14.4 гр. / 283 кКал</p>
           </div>
         </div>
       </div>
@@ -112,10 +90,12 @@
           <a href="#close" title="Close" class="close">×</a>
           <div class="modal-body">
             <img class="picture" src="images/food-2.jpg" alt="Картинка с супом">
-            <h3 class="modal-title">Жареный суп</h3>
-            <p class="info">150 рублей
+            <h3 class="modal-title">Паста Карбонара</h3>
+            <p class="info">229 рублей
 
-              Есть со сковороды шкрябая по ней ложкой.</p>
+              Классическая итальянская паста с нежным беконом, репчатым луком и чесноком в сливочном соусе
+
+              Белки: 5.5 гр., жиры: 22.6 гр., углеводы: 14.4 гр. / 283 кКал</p>
           </div>
         </div>
       </div>
