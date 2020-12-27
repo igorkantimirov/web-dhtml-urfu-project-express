@@ -4,27 +4,14 @@
     <%- include("partials/head.ejs") %>
   </head>
   <body>
-    <style>
-      form {
-        margin-top: 32px;
-        border: 1px solid #e6e6e6;
-        min-width: 300px;
-        max-width: 50%;
-        text-align: center;
-        margin: 0 auto;
-      }
-      input {
-        margin: 10px;
-      }
-    </style>
     <%- include("partials/header.ejs") %>
     <div class="container">
       <form method="post">
         <h1>Авторизация</h1>
-        <label for="email">Почта:</label> <input type="text" name="email" />
+        <label for="email">Почта:</label> <input class="auth-form__input" type="text" name="email" />
         <br />
         <label for="password">Пароль:</label>
-        <input type="password" name="user_password" /> <br />
+        <input class="auth-form__input" type="password" name="user_password" /> <br />
         <input type="submit" class="button-default-s" value="Войти" />
       </form>
       <br>

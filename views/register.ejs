@@ -4,18 +4,14 @@
   <%- include("partials/head.ejs") %>
   </head>
   <body>
-    <style>
-      form{margin-top: 32px; border:1px solid #e6e6e6; width:50%; text-align: center; margin: 0 auto;}
-      input{margin: 10px;}
-    </style>
     <%- include("partials/header.ejs") %>
     <div class="container">
       <form method="post">
         <h1>Регистрация</h1>
-        <label for="username">Имя пользователя:</label> <input type="text" name="username"> <br>
-        <label for="email">Почта:</label> <input type="text" name="email" value="example@example.com"> <br>
-        <label for="phone">Номер телефона:</label> <input type="text" name="phone_number" value="79999999999"> <br>
-        <label for="password">Пароль:</label> <input type="password" name="user_password"> <br>
+        <label for="username">Имя пользователя:</label> <input class="auth-form__input" type="text" name="username"> <br>
+        <label for="email">Почта:</label> <input class="auth-form__input" type="text" name="email" value="example@example.com"> <br>
+        <label for="phone">Номер телефона:</label> <input class="auth-form__input" type="text" name="phone_number" value="79999999999"> <br>
+        <label for="password">Пароль:</label> <input class="auth-form__input" type="password" name="user_password"> <br>
         <p><input type="checkbox" name="agree_rules" id="agree_rules" required><label for="agree_rules">Согласен с <a href=''>правилами сервиса</a></label></p>
         <input type="submit" class="button-default-s" value="Регистрация">
       </form>

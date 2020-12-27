@@ -367,6 +367,24 @@ footer a{
   float: right;
 }
 
+form {
+  margin-top: 32px;
+  border: 1px solid #e6e6e6;
+  min-width: 300px;
+  max-width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+input {
+  margin: 10px;
+}
+.auth-form__input{
+  background-color: #ebebeb;
+  border: 1px solid #c6cef3;
+  padding: 10px;
+}
+
+
 @media only screen and (max-width: 800px) {
   .header-content{
     width: 100%;
