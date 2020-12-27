@@ -18,6 +18,14 @@ header{
   height: 64px;
   display:flex;
 }
+.header-content{
+  margin-left:auto;
+  margin-right:auto;
+  width:70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 header a{
   text-decoration: none;
@@ -45,15 +53,6 @@ header a{
   padding-top: 100px;
 }
 
-.header-content{
-  margin-left:auto;
-  margin-right:auto;
-  width:70%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .header-logo{
  font-weight: bold; 
 }
@@ -72,6 +71,7 @@ header a{
   margin-left: auto;
   margin-right: auto;
   width: 75%;
+  min-height: calc(100vh - 100px);
 }
 
 .container-2columns-imagecol{
@@ -328,8 +328,50 @@ header a{
   user-select: none;
 }
 
+footer{
+  border-top: 1px solid rgb(218, 218, 218);
+  font-size: 13px;
+  font-family:'Arial';
+  background-color: rgb(227,234,236);
+  min-height: 100px;
+}
+
+.footer-content{
+  margin-top: 10px;
+  margin-left:auto;
+  margin-right:auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+footer a{
+  color: #4c4cd8;
+}
+
+.footer-mails{
+  margin-left: 15px;
+  float: left;
+}
+
+.mail-address{
+  text-decoration: none;
+}
+
+.mail-address a:before{
+  content: "\2709"; /* \2709 for mail emoji */
+}
+
+.footer-copyright{
+  float: right;
+}
+
 @media only screen and (max-width: 800px) {
   .header-content{
+    width: 100%;
+  }
+  .footer-content{
     width: 100%;
   }
   .container-2columns-imagecol{
@@ -338,6 +380,28 @@ header a{
   .columns2{
     display: block;
   }
+      footer ul li{
+        display: block;
+    }
+    
+    footer ul li:not(:last-child):after { content: ""; }
+    
+    footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer-mails{
+        display: block;
+    }
+    
+    .footer-copyright{
+        padding-top: 0;
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media only screen and (max-width: 1280px) {
