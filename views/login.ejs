@@ -6,6 +6,7 @@
   <body>
     <%- include("partials/header.ejs") %>
     <div class="container">
+      <%- include("partials/error_msg.ejs") %>
       <form class="auth-form" method="post">
         <h1>Авторизация</h1>
         <label for="email">Почта:</label> <input class="auth-form__input" type="text" name="email" />

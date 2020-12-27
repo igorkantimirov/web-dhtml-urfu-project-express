@@ -25,7 +25,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/login", function (req, res, next) {
-  res.render("login", {user: getUser(req)});
+  res.render("login", {user: getUser(req), error_msg: req.flash('error_full_msg')});
 });
 
 router.get("/register", function (req, res, next) {
@@ -136,6 +136,10 @@ router.post("/register", function (req, res, next) {
     }
   });
 });
+
+router.get("/restore_password", (req, res, next) => {
+  res.render("restore_password", {user: getUser(req)});
+})
 
 /* qr code generation */
 const QRCode = require('qrcode');
