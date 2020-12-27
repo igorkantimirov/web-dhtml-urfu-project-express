@@ -25,7 +25,9 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/login", function (req, res, next) {
-  res.render("login", {user: getUser(req), error_msg: req.flash('error_full_msg')});
+  let error_full_msg = req.flash('error_full_msg');
+  if(error_full_msg.length === 0) { error_full_msg = res.locals.error }
+  res.render("login", {user: getUser(req), error_msg: error_full_msg});
 });
 
 router.get("/register", function (req, res, next) {
@@ -86,6 +88,12 @@ router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
 
 // login-register
 router.post("/login", (req, res, next) => {
+  if(!req.body.email || !req.body.user_password){
+    req.flash("error_full_msg","Заполните все поля!")
+    res.redirect("/login")
+    next();
+    return;
+  }
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/login",

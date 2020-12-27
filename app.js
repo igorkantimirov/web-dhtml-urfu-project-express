@@ -46,16 +46,15 @@ new LocalStrategy({ usernameField: 'email', passwordField: 'user_password'}, (em
     email: email
   }).then(user => {
     if (!user) {
-      return done(null, false, { message: 'That email is not registered' });
+      return done(null, false, { message: 'Пользователя с таким E-Mail адресом нет!' });
     }
-
     // Match password
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) throw err;
       if (isMatch) {
         return done(null, user);
       } else {
-        return done(null, false, { message: 'Password incorrect' });
+        return done(null, false, { message: 'Неправильный пароль!' });
       }
     });
   });
