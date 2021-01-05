@@ -55,6 +55,18 @@ router.post("/delete_table", ensureAuthenticated, function(req, res, next){
   .catch(err=>res.json({errorMessage: err}));
 })
 
+function checkCorrectDateTime(date, time){
+  let tokensDate = date.split("-");
+  let tokensTime = time.split(":");
+  let otherDate = new Date(tokensDate[0], tokensDate[1], tokensDate[2], tokensTime[0], tokensTime[1]);
+  let nowDate = new Date();
+  delta=nowDate.getTime()-otherDate.getTime();
+  if(Math.floor(delta/1000/60/60/24) > 0){
+    return false;
+  }
+  return true;
+}
+
 // on reserve table form
 router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
   const room = req.body.room_type
@@ -63,25 +75,36 @@ router.post("/reserve_table", ensureAuthenticated, function(req, res, next){
   const persons = req.body.persons
   const table = req.body.table_radio
   const additional = req.body.additional
+
   if(!room || !date || !time || !persons || !table){
     res.render('error',{message:"Заполните все поля формы!", error:{status:0, stack:''}})
   }
   else if(!(["Домашний","Восточный","VIP","Музыкальный"].includes(room))){
     res.render('error',{message:"Нет такого зала!", error:{status:1, stack:room}})
   }
+  else if(!checkCorrectDateTime(date, time)){
+    res.render('error',{message:"Неправильная дата и время!", error:{status:1, stack:room}})
+  }
   else{
-    const currentUser = getUser(req)
-    let orderId = undefined;
-    try{
-      let order = new Order({room:room, date:date, time:time, additional:additional, user: currentUser._id, persons:persons, table:table})
-      orderId = order._id
-      order.save()
-    }
-    catch(e){
-      console.log(e);
-    }
-    res.render('success_reserved_table', {user:currentUser, 
-      tableInfo:{_id:orderId, room:room, date:date, time:time, additional:additional, persons:persons, table:table}
+    Order.findOne({room:room, table:table, date:date, time:time}).select("_id").lean().then(result=>{
+      if(result){
+        res.render('error',{message:"Время занято", error:{status:1, stack:room}})
+      }
+      else{
+        const currentUser = getUser(req)
+        let orderId = undefined;
+        try{
+          let order = new Order({room:room, date:date, time:time, additional:additional, user: currentUser._id, persons:persons, table:table})
+          orderId = order._id
+          order.save()
+        }
+        catch(e){
+          console.log(e);
+        }
+        res.render('success_reserved_table', {user:currentUser, 
+          tableInfo:{_id:orderId, room:room, date:date, time:time, additional:additional, persons:persons, table:table}
+        })
+      }
     })
   }
 })
@@ -164,7 +187,7 @@ router.get('/qr/:content', async (req, res, next) => {
     try{
         const content = req.params.content;
         if(content.length > 48){
-          console.error("сработала защита от ddos через qr коды");
+          console.error("500");
         }
         else{
           const qrStream = new PassThrough();
