@@ -6,7 +6,7 @@
   <body>
     <%- include("partials/header.ejs") %>
      <div class="container">
-      <h1><% if(user){ %> <%- user.username %> <% } %></h1>
+      <h1><% if(user){ %> <%= user.username %> <% } %></h1>
       <h2>Информация о заказах</h2>
       <div>
         <% if(reservedTables.length === 0){ %>
@@ -15,15 +15,15 @@
         <% for(var i = 0;i < reservedTables.length;i++){ item=reservedTables[i]; %>
           <div class="table_reservation_card" id="table_<%- item['id'] %>">
             <h3>Столик</h3>
-            <p>Код (покажите на входе):</p> <div style="text-align: center;"><img src="/qr/<%- item['id'] %>" alt="Код"></div>  <br>
-            Зал: <%- item['room'] %>  <br>
-            <%- item['table'] %> <br>
-            Кол-во персон: <%- item['persons'] %> <br>
-            Дата: <%- item['date'] %>  <br>
-            Время: <%- item['time'] %>  <br>
+            <p>Код (покажите на входе):</p> <div style="text-align: center;"><img src="/qr/<%= item['id'] %>" alt="Код"></div>  <br>
+            Зал: <%= item['room'] %>  <br>
+            <%= item['table'] %> <br>
+            Кол-во персон: <%= item['persons'] %> <br>
+            Дата: <%= item['date'] %>  <br>
+            Время: <%= item['time'] %>  <br>
             <hr>
-            Пожелания: <% if(item['additional']){ %> <%- item['additional'] %> <% } else{ %> Нет <% } %>  <br>
-            <button onclick="cancelTable('<%- item['id'] %>');">Отменить</button>
+            Пожелания: <% if(item['additional']){ %> <%= item['additional'] %> <% } else{ %> Нет <% } %>  <br>
+            <button onclick="cancelTable('<%= item['id'] %>');">Отменить</button>
           </div>
         <% } %>
       </div>
